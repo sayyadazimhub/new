@@ -607,10 +607,10 @@ export default function SalesPage() {
             </div>
 
             <Card className="border-none shadow-md bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm overflow-hidden">
-                <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20 pb-6">
+                <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900 pb-6">
                     <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">
-                            <Filter className="h-5 w-5" />
+                        <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">
+                            <BadgeDollarSign className="h-5 w-5" />
                         </div>
                         <div>
                             <CardTitle className="dark:text-slate-100">Invoice Ledger</CardTitle>
@@ -643,10 +643,10 @@ export default function SalesPage() {
                                             <tr>
                                                 <td colSpan="7" className="p-20 text-center">
                                                     <div className="flex flex-col items-center gap-3">
-                                                        <div className="h-16 w-16 rounded-full bg-slate-50 flex items-center justify-center mb-2">
-                                                            <BadgeDollarSign className="h-8 w-8 text-slate-200" />
+                                                        <div className="h-16 w-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-2">
+                                                            <BadgeDollarSign className="h-8 w-8 text-slate-500 dark:text-slate-300" />
                                                         </div>
-                                                        <p className="text-slate-400 font-medium text-lg">No sales records found</p>
+                                                        <p className="text-slate-400 font-medium">No sales records found</p>
                                                         <Button onClick={() => setShowCreateModal(true)} variant="outline" className="rounded-xl mt-2">
                                                             Create your first sale
                                                         </Button>
@@ -888,7 +888,7 @@ export default function SalesPage() {
                                                         step="0.01"
                                                         min="0"
                                                         className={cn(
-                                                            "h-10 rounded-lg border-emerald-200 dark:border-emerald-900/50 focus:ring-emerald-500 focus:border-emerald-500",
+                                                            "h-10 rounded-lg border-emerald-200 dark:border-emerald-900/50 focus-visible:ring-emerald-500 focus-visible:border-emerald-500",
                                                             stockError && "border-rose-500 focus:ring-rose-500"
                                                         )}
                                                         value={item.quantity}
@@ -906,7 +906,7 @@ export default function SalesPage() {
                                                         type="number"
                                                         step="0.01"
                                                         min="0"
-                                                        className="h-10 rounded-lg border-emerald-200 dark:border-emerald-900/50 focus:ring-emerald-500 focus:border-emerald-500"
+                                                        className="h-10 rounded-lg border-emerald-200 dark:border-emerald-900/50 focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                                                         value={item.salePrice}
                                                         placeholder="₹ 0.00"
                                                         onChange={(e) => updateItem(index, 'salePrice', e.target.value)}
@@ -973,7 +973,8 @@ export default function SalesPage() {
                                         type="number"
                                         step="0.01"
                                         min="0"
-                                        className="h-14 rounded-2xl border-emerald-200 dark:border-emerald-800 text-xl font-black text-emerald-600 dark:text-emerald-500 px-6 bg-emerald-50/30 dark:bg-emerald-950/20 placeholder:text-emerald-300 dark:placeholder:text-emerald-700 shadow-inner focus:ring-emerald-500 focus:border-emerald-500"
+                                        autoFocus
+                                        className="h-14 rounded-2xl border-emerald-200 dark:border-emerald-800 text-xl font-black text-emerald-600 dark:text-emerald-500 px-6 bg-emerald-50/30 dark:bg-emerald-950/20 placeholder:text-emerald-300 dark:placeholder:text-emerald-700 shadow-inner focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                                         placeholder="₹ 0.00"
                                         value={formData.paidAmount}
                                         onChange={(e) => setFormData({ ...formData, paidAmount: e.target.value })}
@@ -1107,7 +1108,7 @@ export default function SalesPage() {
                                     min="0"
                                     step="0.01"
                                     placeholder="0.00"
-                                    className="h-11 rounded-xl border-slate-200 px-4 focus:ring-2 focus:ring-emerald-500"
+                                    className="h-11 rounded-xl border-slate-200 px-4 focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:border-emerald-500"
                                     value={editFormData.paidAmount}
                                     onChange={(e) =>
                                         setEditFormData({

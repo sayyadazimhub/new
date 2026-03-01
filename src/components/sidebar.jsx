@@ -19,6 +19,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Sprout,
+  BadgeDollarSign,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -48,7 +49,7 @@ const navSections = [
     title: 'Transactions',
     items: [
       { href: '/user/purchases', label: 'Purchases', icon: ShoppingCart },
-      { href: '/user/sales', label: 'Sales', icon: TrendingUp },
+      { href: '/user/sales', label: 'Sales', icon: BadgeDollarSign },
     ],
   },
   {

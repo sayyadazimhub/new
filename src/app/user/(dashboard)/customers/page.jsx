@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Plus, Pencil, Trash2, Search, Eye, Filter, ShoppingBag, Phone, MapPin } from 'lucide-react';
+import { Plus, Pencil, Trash2, Search, Eye, Filter, ShoppingBag, Phone, MapPin, Users } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 // import { cn } from '@/lib/utils';
 import { ConfirmModal } from '@/components/ConfirmModal';
@@ -115,8 +115,8 @@ export default function CustomersPage() {
         <div className="absolute top-0 right-0 -m-8 h-48 w-48 rounded-full bg-emerald-500/10 blur-3xl" />
         <div className="relative">
           <h1 className="text-3xl font-black tracking-tight">Customer Registry</h1>
-          <p className="text-slate-400 mt-2 flex items-center gap-2">
-            <ShoppingBag className="h-4 w-4" />
+          <p className="text-slate-400 mt-2 flex items-center gap-2 font-medium">
+            <Users className="h-4 w-4" />
             Manage all customers and market clients
           </p>
         </div>
@@ -132,22 +132,24 @@ export default function CustomersPage() {
       {/* Registry Card - Exact Match with Product Page */}
       <Card className="border-none shadow-md bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm overflow-hidden dark:border dark:border-slate-800">
         <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900 pb-6">
-          <div>
-            <CardTitle className="flex items-center gap-2 dark:text-slate-100">
-              <Filter className="h-5 w-5 text-emerald-600 dark:text-emerald-500" />
-              Customer List
-            </CardTitle>
-            <CardDescription className="dark:text-slate-400">View and manage your network of customers</CardDescription>
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-900/50">
+              <Users className="h-5 w-5" />
+            </div>
+            <div>
+              <CardTitle className="dark:text-slate-100">Customer List</CardTitle>
+              <CardDescription className="dark:text-slate-400">View and manage your network of customers</CardDescription>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
               <Input
                 placeholder="Search registry..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-slate-200 focus:ring-emerald-500 h-11"
+                className="pl-10 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 dark:text-slate-100"
               />
             </div>
           </div>
@@ -225,10 +227,10 @@ export default function CustomersPage() {
                     <tr>
                       <td colSpan={4} className="p-20 text-center">
                         <div className="flex flex-col items-center gap-3">
-                          <div className="h-16 w-16 rounded-full bg-slate-50 flex items-center justify-center mb-2">
-                            <ShoppingBag className="h-8 w-8 text-slate-200" />
+                          <div className="h-16 w-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-2">
+                            <Users className="h-8 w-8 text-slate-500 dark:text-slate-300" />
                           </div>
-                          <p className="text-slate-400 font-medium text-lg">No customers found in registry</p>
+                          <p className="text-slate-400 font-medium">No customers found in registry</p>
                           <Button onClick={() => handleOpen()} variant="outline" className="rounded-xl mt-2">
                             Add your first customer
                           </Button>
@@ -373,7 +375,8 @@ export default function CustomersPage() {
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                   required
-                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-emerald-600 dark:text-slate-100"
+                  autoFocus
+                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus-visible:ring-emerald-600 focus-visible:border-emerald-600 dark:text-slate-100"
                   placeholder="e.g. Acme Trading Co."
                 />
               </div>
@@ -382,7 +385,7 @@ export default function CustomersPage() {
                 <Input
                   value={form.phone}
                   onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
-                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-emerald-600 dark:text-slate-100"
+                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus-visible:ring-emerald-600 focus-visible:border-emerald-600 dark:text-slate-100"
                   placeholder="+91 00000 00000"
                 />
               </div>
@@ -391,7 +394,7 @@ export default function CustomersPage() {
                 <Input
                   value={form.address}
                   onChange={(e) => setForm((f) => ({ ...f, address: e.target.value }))}
-                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-emerald-600 dark:text-slate-100"
+                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus-visible:ring-emerald-600 focus-visible:border-emerald-600 dark:text-slate-100"
                   placeholder="Full business address"
                 />
               </div>

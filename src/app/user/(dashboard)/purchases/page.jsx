@@ -541,7 +541,7 @@ export default function PurchasesPage() {
         <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/20 pb-6">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
-              <Filter className="h-5 w-5" />
+              <ShoppingCart className="h-5 w-5" />
             </div>
             <div>
               <CardTitle className="dark:text-slate-100">Transaction History</CardTitle>
@@ -573,8 +573,13 @@ export default function PurchasesPage() {
                       <tr>
                         <td colSpan="6" className="p-20 text-center">
                           <div className="flex flex-col items-center gap-3">
-                            <ShoppingCart className="h-12 w-12 text-slate-200" />
+                            <div className="h-16 w-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-2">
+                              <ShoppingCart className="h-8 w-8 text-slate-500 dark:text-slate-300" />
+                            </div>
                             <p className="text-slate-400 font-medium">No purchase records found</p>
+                            <Button onClick={() => setShowCreateModal(true)} variant="outline" className="rounded-xl mt-2">
+                              Log your first purchase
+                            </Button>
                           </div>
                         </td>
                       </tr>
@@ -828,7 +833,7 @@ export default function PurchasesPage() {
                     type="number"
                     step="0.01"
                     min="0"
-                    className="h-14 rounded-2xl border-slate-200 dark:border-slate-800 text-xl font-black text-emerald-600 dark:text-emerald-500 px-6 bg-emerald-50/30 dark:bg-emerald-950/20 placeholder:text-emerald-300 dark:placeholder:text-emerald-700 shadow-inner"
+                    className="h-14 rounded-2xl border-blue-200 dark:border-blue-800 text-xl font-black text-blue-600 dark:text-blue-500 px-6 bg-blue-50/30 dark:bg-blue-950/20 placeholder:text-blue-300 dark:placeholder:text-blue-500 shadow-inner focus-visible:ring-blue-500 focus-visible:border-blue-500"
                     placeholder="₹ 0.00"
                     value={formData.paidAmount}
                     onChange={(e) => setFormData({ ...formData, paidAmount: e.target.value })}
@@ -849,7 +854,7 @@ export default function PurchasesPage() {
                     <span className="text-sm font-black uppercase tracking-widest">Balance Payable</span>
                     <span className={cn(
                       "text-2xl font-black",
-                      dueAmount > 0 ? 'text-rose-400' : 'text-emerald-400'
+                      dueAmount > 0 ? 'text-rose-400' : 'text-blue-500'
                     )}>
                       ₹{dueAmount.toLocaleString('en-IN', { minimumFractionDigits: 2 })}
                     </span>

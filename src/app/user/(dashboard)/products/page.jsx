@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { Plus, Pencil, Trash2, Search, Package, Filter, Box } from 'lucide-react';
+import { Plus, Pencil, Trash2, Search, Package } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { cn } from '@/lib/utils';
 import { ConfirmModal } from '@/components/ConfirmModal';
@@ -102,9 +102,9 @@ export default function ProductsPage() {
         <div className="absolute top-0 right-0 -m-8 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="relative">
           <h1 className="text-3xl font-black tracking-tight">Product Management</h1>
-          <p className="text-slate-400 mt-2 flex items-center gap-2">
-            <Box className="h-4 w-4" />
-            Registry of all tradeable crops and items
+          <p className="text-slate-400 mt-2 flex items-center gap-2 font-medium">
+            <Package className="h-4 w-4" />
+            Manage all tradeable items
           </p>
         </div>
         <Button
@@ -119,22 +119,24 @@ export default function ProductsPage() {
       {/* Registry Card - Exact Match with Product Page */}
       <Card className="border-none shadow-md bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm overflow-hidden dark:border dark:border-slate-800">
         <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900 pb-6">
-          <div>
-            <CardTitle className="flex items-center gap-2 dark:text-slate-100">
-              <Filter className="h-5 w-5 text-blue-600 dark:text-blue-500" />
-              Product Registry
-            </CardTitle>
-            <CardDescription className="dark:text-slate-400">View and manage all available SKUs</CardDescription>
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+              <Package className="h-5 w-5" />
+            </div>
+            <div>
+              <CardTitle className="dark:text-slate-100">Product Registry</CardTitle>
+              <CardDescription className="dark:text-slate-400">View and manage all available SKUs</CardDescription>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
               <Input
                 placeholder="Search registry..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-slate-200 focus:ring-blue-500 h-11"
+                className="pl-10 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus-visible:ring-blue-500 focus-visible:border-blue-500 dark:text-slate-100"
               />
             </div>
           </div>
@@ -208,10 +210,10 @@ export default function ProductsPage() {
                     <tr>
                       <td colSpan={6} className="p-20 text-center">
                         <div className="flex flex-col items-center gap-3">
-                          <div className="h-16 w-16 rounded-full bg-slate-50 flex items-center justify-center mb-2">
-                            <Package className="h-8 w-8 text-slate-200" />
+                          <div className="h-16 w-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-2">
+                            <Package className="h-8 w-8 text-slate-500 dark:text-slate-300" />
                           </div>
-                          <p className="text-slate-400 font-medium text-lg">Your product catalog is empty</p>
+                          <p className="text-slate-400 font-medium">Your product catalog is empty</p>
                           <Button onClick={() => handleOpen()} variant="outline" className="rounded-xl mt-2">
                             Add your first product
                           </Button>
@@ -273,7 +275,8 @@ export default function ProductsPage() {
                   value={form.name}
                   onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
                   required
-                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-blue-600 dark:text-slate-100"
+                  autoFocus
+                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus-visible:ring-blue-600 focus-visible:border-blue-600 dark:text-slate-100"
                   placeholder="e.g. Basmati Rice, Wheat (Grade A)"
                 />
               </div>
@@ -302,7 +305,7 @@ export default function ProductsPage() {
                   value={form.baseCostPrice}
                   onChange={(e) => setForm((f) => ({ ...f, baseCostPrice: e.target.value }))}
                   required
-                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-blue-600 dark:text-slate-100"
+                  className="rounded-xl h-12 border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus-visible:ring-blue-600 focus-visible:border-blue-600 dark:text-slate-100"
                   placeholder="e.g. 30"
                 />
               </div>

@@ -10,14 +10,13 @@ import {
   Search,
   AlertTriangle,
   Package,
-  Filter,
   CheckCircle2,
-  TrendingDown,
   ArrowRight,
   XCircle,
   ChevronDown,
   ChevronUp,
-  History
+  History,
+  Boxes
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -88,9 +87,9 @@ export default function StockMonitorPage() {
         <div className="absolute top-0 right-0 -m-8 h-48 w-48 rounded-full bg-blue-500/10 blur-3xl" />
         <div className="relative">
           <h1 className="text-3xl font-black tracking-tight">Inventory Monitor</h1>
-          <p className="text-slate-400 mt-2 flex items-center gap-2">
-            <Package className="h-4 w-4" />
-            Live stock tracking and inventory monitoring
+          <p className="text-slate-400 mt-2 flex items-center gap-2 font-medium">
+            <Boxes className="h-4 w-4" />
+            Stock tracking and management
           </p>
         </div>
         <Link href="/user/products">
@@ -136,20 +135,21 @@ export default function StockMonitorPage() {
       {/* Registry Card - Exact Match with Product Page */}
       <Card className="border-none shadow-md bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm overflow-hidden dark:border dark:border-slate-800">
         <CardHeader className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-b dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900 pb-6">
-          <div>
-            <CardTitle className="flex items-center gap-2 dark:text-slate-100">
-              <Filter className="h-5 w-5 text-blue-600 dark:text-blue-500" />
-              Inventory Registry
-            </CardTitle>
-            <CardDescription className="dark:text-slate-400">Real-time stock levels across your catalog</CardDescription>
+          <div className="flex items-center gap-3">
+            <div className="p-2 rounded-xl bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border border-blue-100 dark:border-blue-900/50">
+              <Boxes className="h-5 w-5" />
+            </div>
+            <div>
+              <CardTitle className="dark:text-slate-100">Inventory Registry</CardTitle>
+              <CardDescription className="dark:text-slate-400">Real-time stock levels across your catalog</CardDescription>
+            </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
             <Button
               variant={filterLowStock ? "destructive" : "outline"}
-              size="sm"
               onClick={() => setFilterLowStock(!filterLowStock)}
-              className="rounded-xl h-11 px-6 font-bold w-full sm:w-auto transition-all"
+              className="rounded-xl px-6 w-full sm:w-auto transition-all"
             >
               <AlertTriangle className="mr-2 h-4 w-4" />
               {filterLowStock ? "View All Stock" : "Low Stock Only"}
@@ -160,7 +160,7 @@ export default function StockMonitorPage() {
                 placeholder="Search registry..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-10 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus:ring-blue-500 dark:text-slate-100"
+                className="pl-10 rounded-xl border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 dark:text-slate-100"
               />
             </div>
           </div>
@@ -259,8 +259,15 @@ export default function StockMonitorPage() {
                     <tr>
                       <td colSpan={3} className="p-20 text-center">
                         <div className="flex flex-col items-center gap-3">
-                          <Package className="h-12 w-12 text-slate-200" />
+                          <div className="h-16 w-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mb-2">
+                            <Boxes className="h-8 w-8 text-slate-500 dark:text-slate-300" />
+                          </div>
                           <p className="text-slate-400 font-medium">No inventory data matches your criteria</p>
+                          <Link href="/user/products">
+                            <Button variant="outline" className="rounded-xl mt-2">
+                              Manage product catalog
+                            </Button>
+                          </Link>
                         </div>
                       </td>
                     </tr>
